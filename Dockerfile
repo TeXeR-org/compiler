@@ -111,6 +111,8 @@ RUN tlmgr install \
     neuralnetwork \
     venndiagram \
     chronology \
+    pgfgantt \
+    tikzducks \
     xcolor \
     graphicx \
     # Tables
@@ -353,8 +355,8 @@ RUN set -eu; \
 # `<name>.sty` reports them missing when they are perfectly fine. tlmgr's own
 # installed list is the source of truth and needs no knowledge of file layout.
 #
-# Keep this list in step with the `\usepackage` and `\usetikzlibrary` lines in
-# frontend/lib/tikz/libraries.ts, plus whatever external projects require.
+# Keep this list in step with the `\usepackage` lines of the examples in the
+# library repository, plus whatever external projects require.
 # ──────────────────────────────────────────────────────────────
 RUN set -eu; \
     installed="$(tlmgr list --only-installed 2>/dev/null | sed -n 's/^i \([^:]*\):.*/\1/p')"; \
@@ -363,7 +365,7 @@ RUN set -eu; \
         pgf pgfplots tikz-cd quantikz circuitikz tikz-3dplot chemfig \
         forest tikz-feynman zx-calculus optikz dynkin-diagrams \
         tensormatrix tikzorbital polyhedra tilings braids tikz-nfold \
-        neuralnetwork venndiagram chronology standalone \
+        neuralnetwork venndiagram chronology pgfgantt tikzducks spath3 standalone \
         xetex luatex polyglossia bidi luabidi fontspec amiri tex-gyre needspace lastpage fancyhdr \
         hyphen-french hyphen-arabic babel-french babel-german hyphen-german \
         subfiles mwe varwidth booktabs enumitem mathtools listings beamer biblatex; do \
